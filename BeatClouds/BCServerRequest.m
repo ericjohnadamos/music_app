@@ -9,11 +9,11 @@
 #import "BCServerRequest.h"
 
 static NSString* kLoginURL
-  = @"http://beatclouds.south-soul.com/users/login";
+  = @"http://dev.beatclouds.south-soul.com/users/login";
 static NSString* kResetURL
-  = @"http://beatclouds.south-soul.com/users/forgot_password";
+  = @"http://dev.beatclouds.south-soul.com/users/forgot_password";
 static NSString* kRegisterURL
-  = @"http://beatclouds.south-soul.com/users/register";
+  = @"http://dev.beatclouds.south-soul.com/users/register";
 
 static NSString* kLoginParams
   = @"username=%@&password=%@";
