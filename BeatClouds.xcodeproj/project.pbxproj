@@ -1,0 +1,569 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		842FDC481A97952700E8D834 /* BCModalDismissSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 842FDC471A97952700E8D834 /* BCModalDismissSegue.m */; };
+		842FDC4D1A979A8800E8D834 /* BCServerRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 842FDC4C1A979A8800E8D834 /* BCServerRequest.m */; };
+		842FDC521A97CD8100E8D834 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 842FDC4F1A97CD8100E8D834 /* Roboto-Light.ttf */; };
+		842FDC531A97CD8100E8D834 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 842FDC501A97CD8100E8D834 /* Roboto-Medium.ttf */; };
+		842FDC541A97CD8100E8D834 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 842FDC511A97CD8100E8D834 /* Roboto-Regular.ttf */; };
+		842FDC571A97FA8800E8D834 /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 842FDC561A97FA8800E8D834 /* UserSettings.m */; };
+		8438529B1A937A5500BE41DE /* BCForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8438529A1A937A5500BE41DE /* BCForgotPasswordViewController.m */; };
+		844F97061A7D2AA900AA8C5E /* BCWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844F97051A7D2AA900AA8C5E /* BCWebViewController.m */; };
+		84532E2D1A72635C003DB0CD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84532E2C1A72635C003DB0CD /* main.m */; };
+		84532E301A72635C003DB0CD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84532E2F1A72635C003DB0CD /* AppDelegate.m */; };
+		84532E331A72635C003DB0CD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84532E321A72635C003DB0CD /* ViewController.m */; };
+		84532E361A72635C003DB0CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84532E341A72635C003DB0CD /* Main.storyboard */; };
+		84532E381A72635C003DB0CD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84532E371A72635C003DB0CD /* Images.xcassets */; };
+		84532E3B1A72635C003DB0CD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84532E391A72635C003DB0CD /* LaunchScreen.xib */; };
+		84532E471A72635C003DB0CD /* BeatCloudsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84532E461A72635C003DB0CD /* BeatCloudsTests.m */; };
+		84532F6C1A72752F003DB0CD /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84532E511A72752E003DB0CD /* Bolts.framework */; };
+		84532F6D1A72752F003DB0CD /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84532E521A72752E003DB0CD /* FacebookSDK.framework */; };
+		84532F6E1A72752F003DB0CD /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84532E531A72752E003DB0CD /* FBAudienceNetwork.framework */; };
+		84532F6F1A72752F003DB0CD /* FBAudienceNetwork.README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84532E541A72752E003DB0CD /* FBAudienceNetwork.README.txt */; };
+		84532F701A72752F003DB0CD /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 84532E551A72752E003DB0CD /* LICENSE */; };
+		84532F711A72752F003DB0CD /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84532E561A72752E003DB0CD /* README.txt */; };
+		845330361A7289E9003DB0CD /* BCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845330351A7289E9003DB0CD /* BCLoginViewController.m */; };
+		84FCB8311A97612100E10C3E /* BCRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FCB8301A97612100E10C3E /* BCRegistrationViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		84532E411A72635C003DB0CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84532E1F1A72635C003DB0CD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 84532E261A72635C003DB0CD;
+			remoteInfo = BeatClouds;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		842FDC461A97952700E8D834 /* BCModalDismissSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCModalDismissSegue.h; sourceTree = "<group>"; };
+		842FDC471A97952700E8D834 /* BCModalDismissSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCModalDismissSegue.m; sourceTree = "<group>"; };
+		842FDC4B1A979A8800E8D834 /* BCServerRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCServerRequest.h; sourceTree = "<group>"; };
+		842FDC4C1A979A8800E8D834 /* BCServerRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCServerRequest.m; sourceTree = "<group>"; };
+		842FDC4F1A97CD8100E8D834 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		842FDC501A97CD8100E8D834 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		842FDC511A97CD8100E8D834 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		842FDC551A97FA8800E8D834 /* UserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSettings.h; sourceTree = "<group>"; };
+		842FDC561A97FA8800E8D834 /* UserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettings.m; sourceTree = "<group>"; };
+		843852991A937A5500BE41DE /* BCForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCForgotPasswordViewController.h; sourceTree = "<group>"; };
+		8438529A1A937A5500BE41DE /* BCForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCForgotPasswordViewController.m; sourceTree = "<group>"; };
+		844F97041A7D2AA900AA8C5E /* BCWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCWebViewController.h; sourceTree = "<group>"; };
+		844F97051A7D2AA900AA8C5E /* BCWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCWebViewController.m; sourceTree = "<group>"; };
+		84532E271A72635C003DB0CD /* BeatClouds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeatClouds.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		84532E2B1A72635C003DB0CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84532E2C1A72635C003DB0CD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		84532E2E1A72635C003DB0CD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		84532E2F1A72635C003DB0CD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		84532E311A72635C003DB0CD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		84532E321A72635C003DB0CD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		84532E351A72635C003DB0CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		84532E371A72635C003DB0CD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		84532E3A1A72635C003DB0CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		84532E401A72635C003DB0CD /* BeatCloudsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeatCloudsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		84532E451A72635C003DB0CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84532E461A72635C003DB0CD /* BeatCloudsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeatCloudsTests.m; sourceTree = "<group>"; };
+		84532E511A72752E003DB0CD /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		84532E521A72752E003DB0CD /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		84532E531A72752E003DB0CD /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
+		84532E541A72752E003DB0CD /* FBAudienceNetwork.README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FBAudienceNetwork.README.txt; sourceTree = "<group>"; };
+		84532E551A72752E003DB0CD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		84532E561A72752E003DB0CD /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		845330341A7289E9003DB0CD /* BCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCLoginViewController.h; sourceTree = "<group>"; };
+		845330351A7289E9003DB0CD /* BCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCLoginViewController.m; sourceTree = "<group>"; };
+		84FCB82F1A97612100E10C3E /* BCRegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCRegistrationViewController.h; sourceTree = "<group>"; };
+		84FCB8301A97612100E10C3E /* BCRegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCRegistrationViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		84532E241A72635C003DB0CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84532F6E1A72752F003DB0CD /* FBAudienceNetwork.framework in Frameworks */,
+				84532F6C1A72752F003DB0CD /* Bolts.framework in Frameworks */,
+				84532F6D1A72752F003DB0CD /* FacebookSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84532E3D1A72635C003DB0CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		842FDC491A97953000E8D834 /* Segue */ = {
+			isa = PBXGroup;
+			children = (
+				842FDC461A97952700E8D834 /* BCModalDismissSegue.h */,
+				842FDC471A97952700E8D834 /* BCModalDismissSegue.m */,
+			);
+			name = Segue;
+			sourceTree = "<group>";
+		};
+		842FDC4A1A979A7600E8D834 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				842FDC4B1A979A8800E8D834 /* BCServerRequest.h */,
+				842FDC4C1A979A8800E8D834 /* BCServerRequest.m */,
+			);
+			name = Request;
+			sourceTree = "<group>";
+		};
+		842FDC4E1A97CD6D00E8D834 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				842FDC4F1A97CD8100E8D834 /* Roboto-Light.ttf */,
+				842FDC501A97CD8100E8D834 /* Roboto-Medium.ttf */,
+				842FDC511A97CD8100E8D834 /* Roboto-Regular.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		8438529C1A938F9E00BE41DE /* User */ = {
+			isa = PBXGroup;
+			children = (
+				842FDC551A97FA8800E8D834 /* UserSettings.h */,
+				842FDC561A97FA8800E8D834 /* UserSettings.m */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
+		84532E1E1A72635C003DB0CD = {
+			isa = PBXGroup;
+			children = (
+				84532E501A72752E003DB0CD /* FacebookSDK */,
+				84532E291A72635C003DB0CD /* BeatClouds */,
+				84532E431A72635C003DB0CD /* BeatCloudsTests */,
+				84532E281A72635C003DB0CD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		84532E281A72635C003DB0CD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				84532E271A72635C003DB0CD /* BeatClouds.app */,
+				84532E401A72635C003DB0CD /* BeatCloudsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		84532E291A72635C003DB0CD /* BeatClouds */ = {
+			isa = PBXGroup;
+			children = (
+				842FDC4E1A97CD6D00E8D834 /* Fonts */,
+				842FDC4A1A979A7600E8D834 /* Request */,
+				842FDC491A97953000E8D834 /* Segue */,
+				8438529C1A938F9E00BE41DE /* User */,
+				84532E2E1A72635C003DB0CD /* AppDelegate.h */,
+				84532E2F1A72635C003DB0CD /* AppDelegate.m */,
+				84532E311A72635C003DB0CD /* ViewController.h */,
+				84532E321A72635C003DB0CD /* ViewController.m */,
+				84532E341A72635C003DB0CD /* Main.storyboard */,
+				84532E371A72635C003DB0CD /* Images.xcassets */,
+				84532E391A72635C003DB0CD /* LaunchScreen.xib */,
+				84532E2A1A72635C003DB0CD /* Supporting Files */,
+				845330341A7289E9003DB0CD /* BCLoginViewController.h */,
+				845330351A7289E9003DB0CD /* BCLoginViewController.m */,
+				844F97041A7D2AA900AA8C5E /* BCWebViewController.h */,
+				844F97051A7D2AA900AA8C5E /* BCWebViewController.m */,
+				843852991A937A5500BE41DE /* BCForgotPasswordViewController.h */,
+				8438529A1A937A5500BE41DE /* BCForgotPasswordViewController.m */,
+				84FCB82F1A97612100E10C3E /* BCRegistrationViewController.h */,
+				84FCB8301A97612100E10C3E /* BCRegistrationViewController.m */,
+			);
+			path = BeatClouds;
+			sourceTree = "<group>";
+		};
+		84532E2A1A72635C003DB0CD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				84532E2B1A72635C003DB0CD /* Info.plist */,
+				84532E2C1A72635C003DB0CD /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		84532E431A72635C003DB0CD /* BeatCloudsTests */ = {
+			isa = PBXGroup;
+			children = (
+				84532E461A72635C003DB0CD /* BeatCloudsTests.m */,
+				84532E441A72635C003DB0CD /* Supporting Files */,
+			);
+			path = BeatCloudsTests;
+			sourceTree = "<group>";
+		};
+		84532E441A72635C003DB0CD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				84532E451A72635C003DB0CD /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		84532E501A72752E003DB0CD /* FacebookSDK */ = {
+			isa = PBXGroup;
+			children = (
+				84532E511A72752E003DB0CD /* Bolts.framework */,
+				84532E521A72752E003DB0CD /* FacebookSDK.framework */,
+				84532E531A72752E003DB0CD /* FBAudienceNetwork.framework */,
+				84532E541A72752E003DB0CD /* FBAudienceNetwork.README.txt */,
+				84532E551A72752E003DB0CD /* LICENSE */,
+				84532E561A72752E003DB0CD /* README.txt */,
+			);
+			path = FacebookSDK;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		84532E261A72635C003DB0CD /* BeatClouds */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84532E4A1A72635C003DB0CD /* Build configuration list for PBXNativeTarget "BeatClouds" */;
+			buildPhases = (
+				84532E231A72635C003DB0CD /* Sources */,
+				84532E241A72635C003DB0CD /* Frameworks */,
+				84532E251A72635C003DB0CD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BeatClouds;
+			productName = BeatClouds;
+			productReference = 84532E271A72635C003DB0CD /* BeatClouds.app */;
+			productType = "com.apple.product-type.application";
+		};
+		84532E3F1A72635C003DB0CD /* BeatCloudsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84532E4D1A72635C003DB0CD /* Build configuration list for PBXNativeTarget "BeatCloudsTests" */;
+			buildPhases = (
+				84532E3C1A72635C003DB0CD /* Sources */,
+				84532E3D1A72635C003DB0CD /* Frameworks */,
+				84532E3E1A72635C003DB0CD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				84532E421A72635C003DB0CD /* PBXTargetDependency */,
+			);
+			name = BeatCloudsTests;
+			productName = BeatCloudsTests;
+			productReference = 84532E401A72635C003DB0CD /* BeatCloudsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		84532E1F1A72635C003DB0CD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "SouthSoul IT Solutions";
+				TargetAttributes = {
+					84532E261A72635C003DB0CD = {
+						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 942J3JFWZX;
+					};
+					84532E3F1A72635C003DB0CD = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = 84532E261A72635C003DB0CD;
+					};
+				};
+			};
+			buildConfigurationList = 84532E221A72635C003DB0CD /* Build configuration list for PBXProject "BeatClouds" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				he,
+			);
+			mainGroup = 84532E1E1A72635C003DB0CD;
+			productRefGroup = 84532E281A72635C003DB0CD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				84532E261A72635C003DB0CD /* BeatClouds */,
+				84532E3F1A72635C003DB0CD /* BeatCloudsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		84532E251A72635C003DB0CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				842FDC531A97CD8100E8D834 /* Roboto-Medium.ttf in Resources */,
+				84532E361A72635C003DB0CD /* Main.storyboard in Resources */,
+				84532E3B1A72635C003DB0CD /* LaunchScreen.xib in Resources */,
+				84532F6F1A72752F003DB0CD /* FBAudienceNetwork.README.txt in Resources */,
+				84532E381A72635C003DB0CD /* Images.xcassets in Resources */,
+				842FDC521A97CD8100E8D834 /* Roboto-Light.ttf in Resources */,
+				842FDC541A97CD8100E8D834 /* Roboto-Regular.ttf in Resources */,
+				84532F711A72752F003DB0CD /* README.txt in Resources */,
+				84532F701A72752F003DB0CD /* LICENSE in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84532E3E1A72635C003DB0CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		84532E231A72635C003DB0CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				842FDC4D1A979A8800E8D834 /* BCServerRequest.m in Sources */,
+				842FDC571A97FA8800E8D834 /* UserSettings.m in Sources */,
+				84532E331A72635C003DB0CD /* ViewController.m in Sources */,
+				844F97061A7D2AA900AA8C5E /* BCWebViewController.m in Sources */,
+				8438529B1A937A5500BE41DE /* BCForgotPasswordViewController.m in Sources */,
+				84FCB8311A97612100E10C3E /* BCRegistrationViewController.m in Sources */,
+				84532E301A72635C003DB0CD /* AppDelegate.m in Sources */,
+				84532E2D1A72635C003DB0CD /* main.m in Sources */,
+				845330361A7289E9003DB0CD /* BCLoginViewController.m in Sources */,
+				842FDC481A97952700E8D834 /* BCModalDismissSegue.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84532E3C1A72635C003DB0CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84532E471A72635C003DB0CD /* BeatCloudsTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		84532E421A72635C003DB0CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 84532E261A72635C003DB0CD /* BeatClouds */;
+			targetProxy = 84532E411A72635C003DB0CD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		84532E341A72635C003DB0CD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84532E351A72635C003DB0CD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		84532E391A72635C003DB0CD /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84532E3A1A72635C003DB0CD /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		84532E481A72635C003DB0CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Eric John Adamos (Q3326553XK)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric John Adamos (Q3326553XK)";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "8b26ceac-0feb-4640-92f9-e59553d55491";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		84532E491A72635C003DB0CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Eric John Adamos (Q3326553XK)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric John Adamos (Q3326553XK)";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "8b26ceac-0feb-4640-92f9-e59553d55491";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		84532E4B1A72635C003DB0CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Eric John Adamos (Q3326553XK)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric John Adamos (Q3326553XK)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FacebookSDK",
+				);
+				INFOPLIST_FILE = BeatClouds/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8b26ceac-0feb-4640-92f9-e59553d55491";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		84532E4C1A72635C003DB0CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Eric John Adamos (Q3326553XK)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric John Adamos (Q3326553XK)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FacebookSDK",
+				);
+				INFOPLIST_FILE = BeatClouds/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8b26ceac-0feb-4640-92f9-e59553d55491";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		84532E4E1A72635C003DB0CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = BeatCloudsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BeatClouds.app/BeatClouds";
+			};
+			name = Debug;
+		};
+		84532E4F1A72635C003DB0CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = BeatCloudsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BeatClouds.app/BeatClouds";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		84532E221A72635C003DB0CD /* Build configuration list for PBXProject "BeatClouds" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84532E481A72635C003DB0CD /* Debug */,
+				84532E491A72635C003DB0CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84532E4A1A72635C003DB0CD /* Build configuration list for PBXNativeTarget "BeatClouds" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84532E4B1A72635C003DB0CD /* Debug */,
+				84532E4C1A72635C003DB0CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84532E4D1A72635C003DB0CD /* Build configuration list for PBXNativeTarget "BeatCloudsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84532E4E1A72635C003DB0CD /* Debug */,
+				84532E4F1A72635C003DB0CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 84532E1F1A72635C003DB0CD /* Project object */;
+}
