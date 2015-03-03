@@ -10,16 +10,14 @@
 #import <FacebookSDK/FacebookSDK.h>
 
 @class BCLoginViewController;
+
 @protocol BCLoginViewDelegate <NSObject>
 
 @optional
 - (void) loginViewControllerDidLogin: (BCLoginViewController*) controller;
-
+- (void) loginViewControllerDidLogout: (BCLoginViewController*) controller;
 - (void) loginViewController: (BCLoginViewController*) controller
             didFetchUserInfo: (id<FBGraphUser>)        user;
-
-- (void) loginViewControllerDidLogout: (BCLoginViewController*) controller;
-
 - (void) loginViewController: (BCLoginViewController*) controller
                 didShowError: (NSError*)               error;
 

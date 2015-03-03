@@ -7,29 +7,46 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BCUser.h"
+
+typedef NS_ENUM(NSInteger, BCServerRequestResult)
+{
+  BCRequestResultOK = 200,
+  BCRequestResultBadRequest = 400,
+  BCRequestResultUnauthorized = 401,
+  BCRequestResultNotFound = 404,
+  BCRequestResultServerError = 500,
+  BCRequestResultNotImplemented = 501
+};
+
+typedef void (^BCLoginCompletion)(NSString*             token,
+                                  BCServerRequestResult result);
+typedef void (^BCResetPasswordCompletion)(BCServerRequestResult result);
+typedef void (^BCRegisterCompletion)(NSString*             serverResponse,
+                                     BCServerRequestResult result);
 
 @interface BCServerRequest : NSObject
 
-/**
- * Create request for login running in background thread
- */
-+ (void) requestLoginWithUsername: (NSString*)        username
-                         password: (NSString*)        password
-                         callback: (void(^)(NSData*)) callback;
-/**
- * Create request for reset password running in background thread
- */
-+ (void) requestResetWithUsername: (NSString*)        username
-                         callback: (void(^)(NSData*)) callback;
-/**
- * Create request for registration running in background thread
- */
-+ (void) requestRegistrationWithUsername: (NSString*)        username
-                                password: (NSString*)        password
-                                   email: (NSString*)        email
-                               firstname: (NSString*)        firstname
-                                lastname: (NSString*)        lastname
-                                location: (NSString*)        location
-                                callback: (void(^)(NSData*)) callback;
+extern NSString* const BCRequestKeyStatus;
+extern NSString* const BCRequestKeyResponse;
+extern NSString* const BCRequestKeyUserToken;
+extern NSString* const BCRequestKeyMessage;
+
+extern NSString* const BCRequestParamsLogin;
+extern NSString* const BCRequestParamsResetPassword;
+extern NSString* const BCRequestParamsRegister;
+
+/* Login to the server in background thread */
++ (void) loginWithUsername: (NSString*)         username
+                  password: (NSString*)         password
+                completion: (BCLoginCompletion) completion;
+
+/* Request reset password in background thread */
++ (void) resetPasswordWithUsername: (NSString*)                 username
+                        completion: (BCResetPasswordCompletion) completion;
+
+/* Request registration in background thread */
++ (void) registerWithUser: (BCUser*)              user
+               completion: (BCRegisterCompletion) completion;
 
 @end

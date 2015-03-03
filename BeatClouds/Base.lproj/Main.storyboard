@@ -16,6 +16,10 @@
             <string>Roboto-Light</string>
             <string>Roboto-Light</string>
             <string>Roboto-Light</string>
+            <string>Roboto-Light</string>
+            <string>Roboto-Light</string>
+            <string>Roboto-Light</string>
+            <string>Roboto-Light</string>
         </mutableArray>
         <mutableArray key="Roboto-Medium.ttf">
             <string>Roboto-Medium</string>
@@ -383,8 +387,8 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uU0-pO-cpc" id="Dtb-m3-jo9">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="9998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Preferences" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oqc-X1-JlT" userLabel="PreferencesLabel">
-                                                    <rect key="frame" x="15" y="11" width="74" height="19"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="9998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preferences" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oqc-X1-JlT" userLabel="PreferencesLabel">
+                                                    <rect key="frame" x="15" y="11" width="84" height="19"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="19" id="ARR-Wa-J7a"/>
                                                     </constraints>
@@ -395,7 +399,75 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Oqc-X1-JlT" firstAttribute="leading" secondItem="Dtb-m3-jo9" secondAttribute="leading" constant="15" id="DlW-Te-wvx"/>
-                                                <constraint firstItem="Oqc-X1-JlT" firstAttribute="top" secondItem="Dtb-m3-jo9" secondAttribute="top" constant="11" id="pDn-BZ-cfb"/>
+                                                <constraint firstAttribute="centerY" secondItem="Oqc-X1-JlT" secondAttribute="centerY" constant="1" id="fac-GI-Elw"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="BirthdayCell" id="N8E-aQ-sTe">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="N8E-aQ-sTe" id="0H1-st-qHS">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="9996" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wdK-sQ-lXu" userLabel="DateTextfield">
+                                                    <rect key="frame" x="15" y="0.0" width="570" height="43"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="43" id="dU0-kf-oha"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                </textField>
+                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="9999" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Birthday" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fOX-4Q-HRx" userLabel="BirthdayTextfield">
+                                                    <rect key="frame" x="15" y="0.0" width="84" height="43"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="84" id="5Ps-3i-VwA"/>
+                                                        <constraint firstAttribute="height" constant="43" id="hBQ-no-tBi"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="fOX-4Q-HRx" secondAttribute="centerY" id="NH0-dJ-6u3"/>
+                                                <constraint firstAttribute="trailing" secondItem="wdK-sQ-lXu" secondAttribute="trailing" constant="15" id="Sqm-91-LRQ"/>
+                                                <constraint firstItem="wdK-sQ-lXu" firstAttribute="leading" secondItem="0H1-st-qHS" secondAttribute="leading" constant="15" id="frN-j0-i4U"/>
+                                                <constraint firstItem="wdK-sQ-lXu" firstAttribute="top" secondItem="0H1-st-qHS" secondAttribute="top" id="htY-64-RIA"/>
+                                                <constraint firstAttribute="bottom" secondItem="wdK-sQ-lXu" secondAttribute="bottom" id="tEU-C3-Lp4"/>
+                                                <constraint firstItem="fOX-4Q-HRx" firstAttribute="leading" secondItem="0H1-st-qHS" secondAttribute="leading" constant="15" id="zTe-53-pTX"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CountryCell" id="Isf-LF-4pU" userLabel="CountryCell">
+                                        <rect key="frame" x="0.0" y="246" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Isf-LF-4pU" id="qeo-iQ-yrS">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="9995" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ti7-75-lOB" userLabel="DateTextfield">
+                                                    <rect key="frame" x="15" y="0.0" width="570" height="43"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="43" id="6is-Bl-n81"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                </textField>
+                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="9999" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Country" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Gr-OP-Bqe" userLabel="CountryTextfield">
+                                                    <rect key="frame" x="15" y="0.0" width="84" height="43"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="43" id="JaQ-Ch-7k2"/>
+                                                        <constraint firstAttribute="width" constant="84" id="OXi-20-sot"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ti7-75-lOB" firstAttribute="top" secondItem="qeo-iQ-yrS" secondAttribute="top" id="LP4-Lm-JB1"/>
+                                                <constraint firstAttribute="trailing" secondItem="ti7-75-lOB" secondAttribute="trailing" constant="15" id="RAL-k3-QIu"/>
+                                                <constraint firstAttribute="bottom" secondItem="ti7-75-lOB" secondAttribute="bottom" id="dgd-Mm-OLe"/>
+                                                <constraint firstItem="6Gr-OP-Bqe" firstAttribute="leading" secondItem="qeo-iQ-yrS" secondAttribute="leading" constant="15" id="ico-NG-xor"/>
+                                                <constraint firstAttribute="centerY" secondItem="6Gr-OP-Bqe" secondAttribute="centerY" id="liS-s0-BWN"/>
+                                                <constraint firstItem="ti7-75-lOB" firstAttribute="leading" secondItem="qeo-iQ-yrS" secondAttribute="leading" constant="15" id="tgA-ZJ-QHF"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -445,8 +517,9 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="oiq-5o-ADy">
-                                <rect key="frame" x="282" y="250" width="37" height="37"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="oiq-5o-ADy">
+                                <rect key="frame" x="291" y="259" width="37" height="37"/>
+                                <color key="color" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -475,12 +548,14 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="activityIndicator" destination="oiq-5o-ADy" id="iG7-iN-MUW"/>
+                        <outlet property="cancelBarButton" destination="SgO-uR-v8I" id="JMt-dj-8SI"/>
+                        <outlet property="doneBarButton" destination="56J-sI-15w" id="hTA-9J-r2A"/>
                         <outlet property="tableView" destination="n68-eB-fap" id="tW5-Ns-wpR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vbs-Lo-cbC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2251" y="627"/>
+            <point key="canvasLocation" x="2251" y="623"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="E0l-N6-HME">

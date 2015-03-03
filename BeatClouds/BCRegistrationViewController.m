@@ -18,16 +18,33 @@ typedef NS_ENUM(NSInteger, RegistrationRow)
 NSInteger const kTextfieldTag = 9999;
 NSInteger const kLabelTag = 9998;
 NSInteger const kDoneTag = 9997;
+NSInteger const kBirthdayTag = 9996;
+NSInteger const kCountryTag = 9995;
 
 @interface BCRegistrationViewController ()
-  <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+  <UITableViewDataSource,
+   UITableViewDelegate,
+   UITextFieldDelegate,
+   UIPickerViewDataSource,
+   UIPickerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView* tableView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView* activityIndicator;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem* cancelBarButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem* doneBarButton;
+
+@property (strong, nonatomic) UIDatePicker* datePicker;
+@property (strong, nonatomic) UIToolbar* datePickerToolbar;
+@property (strong, nonatomic) UIPickerView* countryPickerView;
 
 @property (strong, nonatomic) NSArray* sectionHeaders;
 @property (strong, nonatomic) NSArray* userInformationPlaceholders;
 @property (strong, nonatomic) NSArray* musicPreferences;
+@property (strong, nonatomic) NSMutableArray* userMusicPreferences;
+@property (strong, nonatomic) NSArray* countries;
+
+@property (nonatomic, assign) double birthdayTimestamp;
+@property (nonatomic, copy) NSString* country;
 
 @end
 
@@ -37,7 +54,27 @@ NSInteger const kDoneTag = 9997;
 
 @synthesize userInformationPlaceholders = m_userInformationPlaceholders;
 @synthesize musicPreferences = m_musicPreferences;
+@synthesize userMusicPreferences = m_userMusicPreferences;
+@synthesize countries = m_countries;
 @synthesize sectionHeaders = m_sectionHeaders;
+@synthesize datePicker = m_datePicker;
+@synthesize datePickerToolbar = m_datePickerToolbar;
+@synthesize countryPickerView = m_countryPickerView;
+
+#pragma mark - Memory management
+
+- (void) dealloc
+{
+  self.datePicker = nil;
+  self.datePickerToolbar = nil;
+  self.countryPickerView = nil;
+  
+  self.sectionHeaders = nil;
+  self.userInformationPlaceholders = nil;
+  self.musicPreferences = nil;
+  self.userMusicPreferences = nil;
+  self.countries = nil;
+}
 
 #pragma mark - Lifecycle
 
@@ -63,7 +100,8 @@ NSInteger const kDoneTag = 9997;
                                      @"Email Address",
                                      @"First name",
                                      @"Last name",
-                                     @"Location", nil];
+                                     @"Birthday",
+                                     @"Country", nil];
   }
   return m_userInformationPlaceholders;
 }
@@ -90,6 +128,32 @@ NSInteger const kDoneTag = 9997;
   return m_musicPreferences;
 }
 
+- (NSMutableArray*) userMusicPreferences
+{
+  if (m_userMusicPreferences == nil)
+  {
+    m_userMusicPreferences = [NSMutableArray new];
+  }
+  return m_userMusicPreferences;
+}
+
+- (NSArray*) countries
+{
+  if (m_countries == nil)
+  {
+    NSMutableArray* mutableArray = [NSMutableArray new];
+    for (NSString* countryCode in [NSLocale ISOCountryCodes])
+    {
+      NSString* country = [[NSLocale systemLocale]
+                           displayNameForKey: NSLocaleCountryCode
+                                       value: countryCode];
+      [mutableArray addObject: country];
+    }
+    m_countries = mutableArray;
+  }
+  return m_countries;
+}
+
 - (NSArray*) sectionHeaders
 {
   if (m_sectionHeaders == nil)
@@ -99,6 +163,104 @@ NSInteger const kDoneTag = 9997;
                           @"MUSIC PREFERENCES", nil];
   }
   return m_sectionHeaders;
+}
+
+- (UIDatePicker*) datePicker
+{
+  if (m_datePicker == nil)
+  {
+    m_datePicker = [UIDatePicker new];
+    m_datePicker.datePickerMode = UIDatePickerModeDate;
+    [m_datePicker addTarget: self
+                     action: @selector(datePickerDidChangeValue:)
+           forControlEvents: UIControlEventValueChanged];
+  }
+  return m_datePicker;
+}
+
+- (UIToolbar*) datePickerToolbar
+{
+  if (m_datePickerToolbar == nil)
+  {
+    m_datePickerToolbar = [UIToolbar new];
+    m_datePickerToolbar.frame
+      = CGRectMake(0, 0, self.view.bounds.size.width, 44);
+    
+    UIBarButtonItem* extraSpace
+      = [[UIBarButtonItem alloc]
+         initWithBarButtonSystemItem: UIBarButtonSystemItemFlexibleSpace
+                              target: nil
+                              action: nil];
+    UIBarButtonItem* doneButton
+      = [[UIBarButtonItem alloc]
+         initWithTitle: @"Done"
+                 style: UIBarButtonItemStyleDone
+                target: self
+                action: @selector(dismissPicker:)];
+    
+    m_datePickerToolbar.items = [NSArray arrayWithObjects:
+                                 extraSpace, doneButton, nil];
+  }
+  return m_datePickerToolbar;
+}
+
+- (UIPickerView*) countryPickerView
+{
+  if (m_countryPickerView == nil)
+  {
+    m_countryPickerView = [UIPickerView new];
+    m_countryPickerView.dataSource = self;
+    m_countryPickerView.delegate = self;
+  }
+  return m_countryPickerView;
+}
+
+#pragma mark - Methods
+
+-(void) dismissPicker: (id) sender
+{
+  [self datePickerDidChangeValue: self.datePicker];
+  
+  NSIndexPath* indexPath
+    = [NSIndexPath indexPathForRow: self.userInformationPlaceholders.count - 2
+                         inSection: RegistrationRowUserInformation];
+  UITableViewCell* cell = [self.tableView cellForRowAtIndexPath: indexPath];
+  UITextField* textField = (UITextField*)[cell viewWithTag: kBirthdayTag];
+  [textField resignFirstResponder];
+}
+
+- (void) datePickerDidChangeValue: (id) sender
+{
+  NSDate* selectedDate = self.datePicker.date;
+  
+  NSDateFormatter* formatter = [NSDateFormatter new];
+  [formatter setDateFormat: @"E d MMM yyyy"];
+  
+  NSIndexPath* indexPath
+    = [NSIndexPath indexPathForRow: self.userInformationPlaceholders.count - 2
+                         inSection: RegistrationRowUserInformation];
+  UITableViewCell* cell = [self.tableView cellForRowAtIndexPath: indexPath];
+  UITextField* textField = (UITextField*)[cell viewWithTag: kBirthdayTag];
+  textField.text = [formatter stringFromDate: selectedDate];
+  
+  NSTimeInterval timestamp = [selectedDate timeIntervalSince1970];
+  self.birthdayTimestamp = timestamp;
+}
+
+- (void) changeDateFromLabel: (id) sender
+{
+  NSInteger row =[self.countryPickerView selectedRowInComponent: 0];
+  NSString* country = self.countries[row];
+  
+  NSIndexPath* indexPath
+    = [NSIndexPath indexPathForRow: self.userInformationPlaceholders.count - 1
+                         inSection: RegistrationRowUserInformation];
+  UITableViewCell* cell = [self.tableView cellForRowAtIndexPath: indexPath];
+  UITextField* textField = (UITextField*)[cell viewWithTag: kCountryTag];
+  textField.text = country;
+  self.country = country;
+  
+  [textField resignFirstResponder];
 }
 
 #pragma mark - UITableViewDataSource methods
@@ -120,11 +282,38 @@ NSInteger const kDoneTag = 9997;
   
   if (indexPath.section == RegistrationRowUserInformation)
   {
-    cell = [tableView dequeueReusableCellWithIdentifier: @"TextfieldCell"];
-    
-    UITextField* textField = (UITextField*)[cell viewWithTag: kTextfieldTag];
-    textField.delegate = self;
-    textField.placeholder = self.userInformationPlaceholders[indexPath.row];
+    if (indexPath.row == self.userInformationPlaceholders.count - 2)
+    {
+      cell = [tableView dequeueReusableCellWithIdentifier: @"BirthdayCell"];
+      
+      UITextField* textField = (UITextField*)[cell viewWithTag: kBirthdayTag];
+      textField.inputView = self.datePicker;
+      textField.inputAccessoryView = self.datePickerToolbar;
+      [[textField valueForKey: @"textInputTraits"] setValue:
+       [UIColor clearColor] forKey: @"insertionPointColor"];
+    }
+    else if (indexPath.row == self.userInformationPlaceholders.count - 1)
+    {
+      cell = [tableView dequeueReusableCellWithIdentifier: @"CountryCell"];
+      
+      UITextField* textField = (UITextField*)[cell viewWithTag: kCountryTag];
+      textField.inputView = self.countryPickerView;
+      [[textField valueForKey: @"textInputTraits"] setValue:
+       [UIColor clearColor] forKey: @"insertionPointColor"];
+    }
+    else
+    {
+      cell = [tableView dequeueReusableCellWithIdentifier: @"TextfieldCell"];
+      
+      UITextField* textField = (UITextField*)[cell viewWithTag: kTextfieldTag];
+      textField.delegate = self;
+      textField.placeholder = self.userInformationPlaceholders[indexPath.row];
+      
+      if (indexPath.row == 1)
+      {
+        textField.secureTextEntry = YES;
+      }
+    }
   }
   else
   {
@@ -205,11 +394,17 @@ didSelectRowAtIndexPath: (NSIndexPath*) indexPath
     {
       cell.accessoryType = UITableViewCellAccessoryCheckmark;
       label.textColor = [UIColor blackColor];
+      
+      [self.userMusicPreferences addObject:
+       [NSNumber numberWithInt: indexPath.row + 1]];
     }
     else
     {
       cell.accessoryType = UITableViewCellAccessoryNone;
       label.textColor = [UIColor lightGrayColor];
+      
+      [self.userMusicPreferences removeObject:
+       [NSNumber numberWithInt: indexPath.row + 1]];
     }
   }
 }
@@ -237,6 +432,14 @@ heightForRowAtIndexPath: (NSIndexPath*) indexPath
 
 - (IBAction) onDoneButtonHit: (id) sender
 {
+  self.activityIndicator.hidden = NO;
+  self.cancelBarButton.enabled = NO;
+  self.doneBarButton.enabled = NO;
+  
+  [self.tableView scrollRectToVisible: CGRectMake(0, 0, 1, 1)
+                             animated: NO];
+  self.tableView.userInteractionEnabled = NO;
+  
   UITableViewCell* cell = nil;
   NSIndexPath* indexPath = nil;
   
@@ -270,45 +473,93 @@ heightForRowAtIndexPath: (NSIndexPath*) indexPath
   textField = (UITextField*)[cell viewWithTag: kTextfieldTag];
   NSString* lastname = textField.text;
   
-  indexPath = [NSIndexPath indexPathForRow: 5
-                                 inSection: RegistrationRowUserInformation];
-  cell = [self.tableView cellForRowAtIndexPath: indexPath];
-  textField = (UITextField*)[cell viewWithTag: kTextfieldTag];
-  NSString* location = textField.text;
+  NSString* userMusicPreferences = @"";
+  if (self.userMusicPreferences != nil)
+  {
+    for (id item in self.userMusicPreferences)
+    {
+      if ([item isKindOfClass: NSNumber.class])
+      {
+        NSNumber* number = (NSNumber*)item;
+        userMusicPreferences = [userMusicPreferences stringByAppendingFormat:
+                                @"%@,", [number stringValue]];
+      }
+    }
+    if (userMusicPreferences.length > 0)
+    {
+      /* Truncate the last character */
+      userMusicPreferences = [userMusicPreferences substringToIndex:
+                              userMusicPreferences.length - 1];
+    }
+  }
   
+  BCUser* user = [BCUser new];
+  user.username = username;
+  user.password = password;
+  user.email = emailAddress;
+  user.firstname = firstname;
+  user.lastname = lastname;
+  user.location = self.country;
+  user.birthday = self.birthdayTimestamp;
+  user.musicPreferences = userMusicPreferences;
   
-  self.activityIndicator.hidden = NO;
-  [BCServerRequest requestRegistrationWithUsername: username
-                                          password: password
-                                             email: emailAddress
-                                         firstname: firstname
-                                          lastname: lastname
-                                          location: location
-                                          callback: ^(NSData* data)
+  [BCServerRequest registerWithUser: user
+                         completion: ^(NSString*             serverResponse,
+                                       BCServerRequestResult result)
    {
-     if (data != nil)
+     if (result == BCRequestResultOK)
      {
-       NSDictionary* dictionary
-         = [NSJSONSerialization JSONObjectWithData: data
-                                           options: kNilOptions
-                                             error: nil];
-       NSInteger status = [dictionary[@"status"] intValue];
-       if (status == 200)
-       {
-         [self dismissViewControllerAnimated: YES
-                                  completion: nil];
-       }
+       [self dismissViewControllerAnimated: YES
+                                completion: nil];
      }
      else
      {
+       NSString* response = @"Unable to register";
+       if (serverResponse != nil && serverResponse.length > 0)
+       {
+         response = serverResponse;
+       }
+       
        [[[UIAlertView alloc] initWithTitle: @"BeatClouds"
-                                   message: @"Fill in required fields"
+                                   message: response
                                   delegate: nil
                          cancelButtonTitle: nil
                          otherButtonTitles: @"Try again", nil] show];
      }
+     self.tableView.userInteractionEnabled = YES;
      self.activityIndicator.hidden = YES;
+     self.cancelBarButton.enabled = YES;
+     self.doneBarButton.enabled = YES;
    }];
+}
+
+#pragma mark - UIPickerViewDataSource
+
+- (NSInteger) numberOfComponentsInPickerView: (UIPickerView*) pickerView
+{
+  return 1;
+}
+
+- (NSInteger) pickerView: (UIPickerView*) pickerView
+ numberOfRowsInComponent: (NSInteger)     component;
+{
+  return self.countries.count;
+}
+
+#pragma mark - UIPickerViewDelegate
+
+- (NSString*) pickerView: (UIPickerView*) pickerView
+             titleForRow: (NSInteger)     row
+            forComponent: (NSInteger)     component
+{
+  return [self.countries objectAtIndex: row];
+}
+
+- (void) pickerView: (UIPickerView*) pickerView
+       didSelectRow: (NSInteger)     row
+        inComponent: (NSInteger)     component
+{
+  [self changeDateFromLabel: self.countryPickerView];
 }
 
 @end
