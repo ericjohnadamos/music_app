@@ -66,6 +66,8 @@ CGFloat const kDefaultLogoTopSpace = 38.0f;
   
   /* hide the activity indicator */
   self.activityIndicator.hidden = YES;
+  
+  [self.logoImageView setNeedsUpdateConstraints];
 }
 
 #pragma mark - Properties
