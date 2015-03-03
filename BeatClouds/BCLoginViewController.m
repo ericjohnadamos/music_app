@@ -26,6 +26,8 @@ NSString* const kPasswordCell = @"kPasswordCell";
 NSInteger const kUsernameTextFieldTag = 9998;
 NSInteger const kPasswordTextFieldTag = 9999;
 
+CGFloat const kDefaultLogoTopSpace = 38.0f;
+
 @interface BCLoginViewController ()
   <FBLoginViewDelegate,
    UITableViewDataSource,
