@@ -40,7 +40,12 @@ CGFloat const kDefaultLogoTopSpace = 38.0f;
 @property (weak, nonatomic) IBOutlet FBLoginView* fbLoginView;
 @property (weak, nonatomic) IBOutlet UITableView* loginTableView;
 @property (weak, nonatomic) IBOutlet UILabel* invalidCredentialsLabel;
+@property (weak, nonatomic) IBOutlet UIButton* loginButton;
+@property (weak, nonatomic) IBOutlet UIButton* forgotPasswordButton;
+@property (weak, nonatomic) IBOutlet UIButton* signupButton;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView* activityIndicator;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint* logoTopSpace;
+@property (weak, nonatomic) IBOutlet UIImageView* logoImageView;
 
 @end
 
