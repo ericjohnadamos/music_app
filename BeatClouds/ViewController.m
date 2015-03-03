@@ -17,11 +17,13 @@
 
 NSString* const kStoryboard = @"Main";
 
-@interface ViewController () <BCLoginViewDelegate>
+@interface ViewController () <BCLoginViewDelegate, BCWebViewDelegate>
 
 @property (nonatomic, assign) BOOL firstTime;
 
 @property (nonatomic, strong) BCLoginViewController* loginViewController;
+@property (nonatomic, strong) BCWebViewController* webViewController;
+
 @end
 
 @implementation ViewController
@@ -29,6 +31,8 @@ NSString* const kStoryboard = @"Main";
 #pragma mark - Synthesize
 
 @synthesize loginViewController = m_loginViewController;
+@synthesize webViewController = m_webViewController;
+
 #pragma mark - Properties
 
 - (BCLoginViewController*) loginViewController
@@ -51,6 +55,30 @@ NSString* const kStoryboard = @"Main";
   }
   return m_loginViewController;
 }
+
+- (BCWebViewController*) webViewController
+{
+  if (m_webViewController == nil)
+  {
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName: kStoryboard
+                                                         bundle: nil];
+    UIViewController* viewController
+      = [storyboard instantiateViewControllerWithIdentifier:
+         kWebviewIdentifier];
+    viewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    
+    if ([viewController isKindOfClass: BCWebViewController.class])
+    {
+      BCWebViewController* webViewController
+        = (BCWebViewController*) viewController;
+      webViewController.delegate = self;
+    }
+    m_webViewController = (BCWebViewController*) viewController;
+  }
+  return m_webViewController;
+}
+
+#pragma mark - Lifecycle
 
 - (void) viewDidLoad
 {
@@ -77,14 +105,7 @@ NSString* const kStoryboard = @"Main";
 
 - (void) loginViewControllerDidLogin: (BCLoginViewController*) controller
 {
-  UIStoryboard* storyboard = [UIStoryboard storyboardWithName: kStoryboard
-                                                       bundle: nil];
-  UIViewController* webViewController
-    = [storyboard instantiateViewControllerWithIdentifier: kWebviewIdentifier];
-  webViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-  [controller presentViewController: webViewController
-                           animated: YES
-                         completion: nil];
+  [self.webViewController initWebView];
 }
 
 - (void) loginViewController: (BCLoginViewController*) controller
@@ -102,6 +123,18 @@ NSString* const kStoryboard = @"Main";
                 didShowError: (NSError*)               error
 {
   /* TODO: Implement me */
+}
+
+#pragma mark - BCWebViewDelegate
+
+- (void) webViewControllerDidFinishPostLoad: (BCWebViewController*) controller
+{
+  [self.loginViewController presentViewController: self.webViewController
+                                         animated: YES
+                                       completion: ^(void)
+   {
+     [self.loginViewController prepareForDismiss];
+   }];
 }
 
 @end
