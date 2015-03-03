@@ -18,39 +18,96 @@ typedef NS_ENUM(NSInteger, LoginRow)
   LoginRowPassword,
 };
 
+/* Cell identifiers */
 NSString* const kUsernameCell = @"kUsernameCell";
 NSString* const kPasswordCell = @"kPasswordCell";
 
+/* Component tags */
 NSInteger const kUsernameTextFieldTag = 9998;
 NSInteger const kPasswordTextFieldTag = 9999;
 
+CGFloat const kDefaultLogoTopSpace = 38.0f;
+
 @interface BCLoginViewController ()
   <FBLoginViewDelegate,
-   UITableViewDataSource, UITableViewDelegate,
+   UITableViewDataSource,
+   UITableViewDelegate,
    UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet FBLoginView* fbLoginView;
+@property (nonatomic, assign) NSString* username;
+@property (nonatomic, assign) NSString* password;
 
+@property (weak, nonatomic) IBOutlet FBLoginView* fbLoginView;
 @property (weak, nonatomic) IBOutlet UITableView* loginTableView;
 @property (weak, nonatomic) IBOutlet UILabel* invalidCredentialsLabel;
+@property (weak, nonatomic) IBOutlet UIButton* loginButton;
+@property (weak, nonatomic) IBOutlet UIButton* forgotPasswordButton;
+@property (weak, nonatomic) IBOutlet UIButton* signupButton;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView* activityIndicator;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint* logoTopSpace;
+@property (weak, nonatomic) IBOutlet UIImageView* logoImageView;
 
 @end
 
 @implementation BCLoginViewController
 
+#pragma mark - View Lifecycle
+
 - (void) viewDidLoad
 {
   [super viewDidLoad];
   
+  /* Set the facebook properties */
   self.fbLoginView.delegate = self;
   self.fbLoginView.readPermissions = @[@"public_profile", @"email"];
   
   self.loginTableView.dataSource = self;
   self.loginTableView.delegate = self;
   
+  /* hide the activity indicator */
   self.activityIndicator.hidden = YES;
+  
+  [self.logoImageView setNeedsUpdateConstraints];
 }
+
+#pragma mark - Properties
+
+- (NSString*) username
+{
+  NSString* returnValue = @"";
+  UITextField* textfield = (UITextField*)[self.view viewWithTag:
+                                          kUsernameTextFieldTag];
+  if (textfield != nil)
+  {
+    returnValue = textfield.text;
+  }
+  return returnValue;
+}
+
+- (NSString*) password
+{
+  NSString* returnValue = @"";
+  UITextField* textfield = (UITextField*)[self.view viewWithTag:
+                                          kPasswordTextFieldTag];
+  if (textfield != nil)
+  {
+    returnValue = textfield.text;
+  }
+  return returnValue;
+}
+
+#pragma mark - Class methods
+
+- (void) clearAllText
+{
+  UITextField* usernameTextField = (UITextField*)[self.view viewWithTag:
+                                                  kUsernameTextFieldTag];
+  UITextField* passwordTextField = (UITextField*)[self.view viewWithTag:
+                                                  kPasswordTextFieldTag];
+  usernameTextField.text = @"";
+  passwordTextField.text = @"";
+}
+
 #pragma mark - FBLoginViewDelegate method
 
 - (void) loginViewShowingLoggedInUser: (FBLoginView*) loginView
@@ -63,6 +120,16 @@ NSInteger const kPasswordTextFieldTag = 9999;
   }
 }
 
+- (void) loginViewShowingLoggedOutUser: (FBLoginView*) loginView
+{
+  if (   self.delegate != nil
+      && [self.delegate respondsToSelector:
+          @selector(loginViewControllerDidLogout:)])
+  {
+    [self.delegate loginViewControllerDidLogout: self];
+  }
+}
+
 - (void) loginViewFetchedUserInfo: (FBLoginView*)    loginView
                              user: (id<FBGraphUser>) user
 {
@@ -72,16 +139,6 @@ NSInteger const kPasswordTextFieldTag = 9999;
   {
     [self.delegate loginViewController: self
                       didFetchUserInfo: user];
-  }
-}
-
-- (void) loginViewShowingLoggedOutUser: (FBLoginView*) loginView
-{
-  if (   self.delegate != nil
-      && [self.delegate respondsToSelector:
-          @selector(loginViewControllerDidLogout:)])
-  {
-    [self.delegate loginViewControllerDidLogout: self];
   }
 }
 
@@ -102,6 +159,7 @@ NSInteger const kPasswordTextFieldTag = 9999;
 - (NSInteger) tableView: (UITableView*) tableView
   numberOfRowsInSection: (NSInteger)    section
 {
+  /* Table contains username and password fields */
   return 2;
 }
 
@@ -150,61 +208,87 @@ NSInteger const kPasswordTextFieldTag = 9999;
 
 #pragma mark - Event handler
 
-- (IBAction) onLoginButtonHit: (id) sender
+- (void) enableLoader
 {
-  UIView* usernameView = [self.view viewWithTag: kUsernameTextFieldTag];
-  UIView* passwordView = [self.view viewWithTag: kPasswordTextFieldTag];
+  [[self view] endEditing: YES];
   
-  if (   [usernameView isKindOfClass: [UITextField class]]
-      && [passwordView isKindOfClass: [UITextField class]])
+  [UIView animateWithDuration: 0.35f
+                   animations: ^(void)
   {
-    self.activityIndicator.hidden = NO;
+    self.loginTableView.alpha = 0.0f;
+    self.loginButton.alpha = 0.0f;
+    self.forgotPasswordButton.alpha = 0.0f;
+    self.signupButton.alpha = 0.0f;
+    self.fbLoginView.alpha = 0.0f;
+    
     self.invalidCredentialsLabel.hidden = YES;
     
-    [BCServerRequest
-     requestLoginWithUsername: ((UITextField*)usernameView).text
-                     password: ((UITextField*)passwordView).text
-                     callback: ^(NSData* data)
-     {
-       if (data != nil)
-       {
-         NSDictionary* dictionary
-          = [NSJSONSerialization JSONObjectWithData: data
-                                            options: kNilOptions
-                                              error: nil];
-         NSInteger status = [dictionary[@"status"] intValue];
-         if (status == 200)
-         {
-           if (   self.delegate != nil
-               && [self.delegate respondsToSelector:
-                   @selector(loginViewControllerDidLogin:)])
-           {
-             NSString* token = dictionary[@"response"][@"user_token"];
-             
-             [[UserSettings sharedInstance] setToken: token];
-             
-             [self.delegate loginViewControllerDidLogin: self];
-           }
-           
-           ((UITextField*)usernameView).text = @"";
-           ((UITextField*)passwordView).text = @"";
-         }
-         else
-         {
-           self.invalidCredentialsLabel.hidden = NO;
-         }
-       }
-       else
-       {
-         self.invalidCredentialsLabel.hidden = NO;
-       }
-       self.activityIndicator.hidden = YES;
-     }];
+    self.logoTopSpace.constant = 164.0f;
+    [self.logoImageView layoutIfNeeded];
   }
-  else
+                   completion: ^(BOOL isFinished)
   {
-    self.invalidCredentialsLabel.hidden = NO;
-  }
+    self.activityIndicator.hidden = NO;
+  }];
+}
+
+- (void) disableLoader
+{
+  self.loginTableView.alpha = 1.0f;
+  self.loginButton.alpha = 1.0f;
+  self.forgotPasswordButton.alpha = 1.0f;
+  self.signupButton.alpha = 1.0f;
+  self.fbLoginView.alpha = 1.0f;
+  
+  self.logoTopSpace.constant = kDefaultLogoTopSpace;
+  [self.logoImageView layoutIfNeeded];
+}
+
+- (void) prepareForDismiss
+{
+  [self disableLoader];
+  self.activityIndicator.hidden = YES;
+}
+
+- (IBAction) onLoginButtonHit: (id) sender
+{
+  [self enableLoader];
+  
+  /* Communicate server to login */
+  [BCServerRequest loginWithUsername: self.username
+                            password: self.password
+                          completion: ^(NSString*             token,
+                                        BCServerRequestResult result)
+   {
+     if (result == BCRequestResultOK)
+     {
+       if (   self.delegate != nil
+           && [self.delegate respondsToSelector:
+               @selector(loginViewControllerDidLogin:)])
+       {
+         [[UserSettings sharedInstance] setToken: token];
+         
+         /* Begin to inform the delegate about the successful login */
+         [self.delegate loginViewControllerDidLogin: self];
+       }
+       /* Clear username and password textfield */
+       [self clearAllText];
+     }
+     else
+     {
+       [UIView animateWithDuration: 0.35f
+                        animations: ^(void)
+        {
+          /* Show error to the user */
+          self.invalidCredentialsLabel.hidden = NO;
+          [self disableLoader];
+        }
+                        completion: ^(BOOL isFinished)
+        {
+          self.activityIndicator.hidden = YES;
+        }];
+     }
+   }];
 }
 
 - (void) touchesBegan: (NSSet*)   touches

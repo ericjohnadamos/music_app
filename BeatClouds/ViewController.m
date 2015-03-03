@@ -17,13 +17,68 @@
 
 NSString* const kStoryboard = @"Main";
 
-@interface ViewController () <BCLoginViewDelegate>
+@interface ViewController () <BCLoginViewDelegate, BCWebViewDelegate>
 
 @property (nonatomic, assign) BOOL firstTime;
+
+@property (nonatomic, strong) BCLoginViewController* loginViewController;
+@property (nonatomic, strong) BCWebViewController* webViewController;
 
 @end
 
 @implementation ViewController
+
+#pragma mark - Synthesize
+
+@synthesize loginViewController = m_loginViewController;
+@synthesize webViewController = m_webViewController;
+
+#pragma mark - Properties
+
+- (BCLoginViewController*) loginViewController
+{
+  if (m_loginViewController == nil)
+  {
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName: kStoryboard
+                                                         bundle: nil];
+    UIViewController* loginViewController
+      = [storyboard instantiateViewControllerWithIdentifier: kLoginIdentifier];
+    loginViewController.modalTransitionStyle
+      = UIModalTransitionStyleCrossDissolve;
+    
+    if ([loginViewController isKindOfClass: [BCLoginViewController class]])
+    {
+      ((BCLoginViewController*) loginViewController).delegate = self;
+      
+    }
+    m_loginViewController = (BCLoginViewController*)loginViewController;
+  }
+  return m_loginViewController;
+}
+
+- (BCWebViewController*) webViewController
+{
+  if (m_webViewController == nil)
+  {
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName: kStoryboard
+                                                         bundle: nil];
+    UIViewController* viewController
+      = [storyboard instantiateViewControllerWithIdentifier:
+         kWebviewIdentifier];
+    viewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    
+    if ([viewController isKindOfClass: BCWebViewController.class])
+    {
+      BCWebViewController* webViewController
+        = (BCWebViewController*) viewController;
+      webViewController.delegate = self;
+    }
+    m_webViewController = (BCWebViewController*) viewController;
+  }
+  return m_webViewController;
+}
+
+#pragma mark - Lifecycle
 
 - (void) viewDidLoad
 {
@@ -40,16 +95,7 @@ NSString* const kStoryboard = @"Main";
   {
     self.firstTime = NO;
     
-    UIStoryboard* storyboard = [UIStoryboard storyboardWithName: kStoryboard
-                                                         bundle: nil];
-    UIViewController* loginViewController
-      = [storyboard instantiateViewControllerWithIdentifier: kLoginIdentifier];
-    if ([loginViewController isKindOfClass: [BCLoginViewController class]])
-    {
-      ((BCLoginViewController*) loginViewController).delegate = self;
-    }
-    
-    [self presentViewController: loginViewController
+    [self presentViewController: self.loginViewController
                        animated: NO
                      completion: nil];
   }
@@ -59,14 +105,7 @@ NSString* const kStoryboard = @"Main";
 
 - (void) loginViewControllerDidLogin: (BCLoginViewController*) controller
 {
-  UIStoryboard* storyboard = [UIStoryboard storyboardWithName: kStoryboard
-                                                       bundle: nil];
-  UIViewController* webViewController
-    = [storyboard instantiateViewControllerWithIdentifier: kWebviewIdentifier];
-  webViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-  [controller presentViewController: webViewController
-                           animated: YES
-                         completion: nil];
+  [self.webViewController initWebView];
 }
 
 - (void) loginViewController: (BCLoginViewController*) controller
@@ -84,6 +123,18 @@ NSString* const kStoryboard = @"Main";
                 didShowError: (NSError*)               error
 {
   /* TODO: Implement me */
+}
+
+#pragma mark - BCWebViewDelegate
+
+- (void) webViewControllerDidFinishPostLoad: (BCWebViewController*) controller
+{
+  [self.loginViewController presentViewController: self.webViewController
+                                         animated: YES
+                                       completion: ^(void)
+   {
+     [self.loginViewController prepareForDismiss];
+   }];
 }
 
 @end

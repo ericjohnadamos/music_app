@@ -36,42 +36,33 @@
 
 - (IBAction) onSubmitButtonHit: (id) sender
 {
-  NSString* value = self.usernameTextfield.text;
-  if (value.length > 0)
+  NSString* username = self.usernameTextfield.text;
+  if (username.length > 0)
   {
     self.usernameTextfield.enabled = NO;
     self.submitButton.enabled = NO;
     self.activityIndicator.hidden = NO;
     
-    [BCServerRequest
-     requestResetWithUsername: value
-                     callback: ^(NSData* data)
+    /* Communicate server to reset password */
+    [BCServerRequest resetPasswordWithUsername: username
+                                    completion: ^(BCServerRequestResult result)
      {
-       if (data != nil)
+       if (result == BCRequestResultOK)
        {
-         NSDictionary* dictionary
-           = [NSJSONSerialization JSONObjectWithData: data
-                                             options: kNilOptions
-                                               error: nil];
+         self.usernameTextfield.enabled = YES;
+         self.submitButton.enabled = YES;
+         self.activityIndicator.hidden = YES;
          
-         NSInteger status = [dictionary[@"status"] intValue];
-         if (status == 200)
-         {
-           self.usernameTextfield.enabled = YES;
-           self.submitButton.enabled = YES;
-           self.activityIndicator.hidden = YES;
-           
-           [self dismissViewControllerAnimated: YES
-                                    completion: nil];
-         }
-         else
-         {
-           [[[UIAlertView alloc] initWithTitle: @"BeatClouds"
-                                       message: @"Email address not found"
-                                      delegate: nil
-                             cancelButtonTitle: nil
-                             otherButtonTitles: @"Try again", nil] show];
-         }
+         [self dismissViewControllerAnimated: YES
+                                  completion: nil];
+       }
+       else
+       {
+         [[[UIAlertView alloc] initWithTitle: @"BeatClouds"
+                                     message: @"Email address not found"
+                                    delegate: nil
+                           cancelButtonTitle: nil
+                           otherButtonTitles: @"Try again", nil] show];
        }
        
        self.usernameTextfield.enabled = YES;

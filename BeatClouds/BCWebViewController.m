@@ -26,18 +26,21 @@
 
 #pragma mark - Lifecycle
 
+- (void) initWebView
+{
+  NSString* URLString = @"http://dev.beatclouds.south-soul.com/html/1.0";
+  NSURLRequest* request
+  = [NSURLRequest requestWithURL: [NSURL URLWithString: URLString]
+                     cachePolicy: NSURLRequestReloadIgnoringCacheData
+                 timeoutInterval: 60];
+  [self.webview loadRequest: request];
+  
+  [self.view addSubview: self.webview];
+}
+
 - (void) viewDidLoad
 {
   [super viewDidLoad];
-  
-  NSString* URLString = @"http://beatclouds.south-soul.com/html/1.0";
-  NSURLRequest* request
-    = [NSURLRequest requestWithURL: [NSURL URLWithString: URLString]
-                       cachePolicy: NSURLRequestReloadIgnoringCacheData
-                   timeoutInterval: 60];
-  [self.webview loadRequest: request];
-  
-  [self.view addSubview: self.webview]; 
 }
 
 #pragma mark - Property implementation
@@ -103,17 +106,24 @@ decidePolicyForNavigationAction: (WKNavigationAction*)                action
 - (void) userContentController: (WKUserContentController*) userContentController
        didReceiveScriptMessage: (WKScriptMessage*)         message
 {
-  if ([message.name isEqualToString:@"observe"])
+  if ([message.name isEqualToString: @"observe"])
   {
-    NSString* token = [UserSettings sharedInstance].token;
-    
-    NSLog(@"Token %@", token);
-    
-    NSString* template = @"setToken(\"%@\");";
-    NSString* javascriptFunction = [NSString stringWithFormat: template, token];
-    
-    [self.webview evaluateJavaScript: javascriptFunction
-                   completionHandler: nil];
+    if ([message.body isEqualToString: @"userToken"])
+    {
+      NSString* token = [UserSettings sharedInstance].token;
+      
+      NSLog(@"Token %@", token);
+      
+      NSString* template = @"setToken(\"%@\");";
+      NSString* javascriptFunction = [NSString stringWithFormat: template, token];
+      
+      [self.webview evaluateJavaScript: javascriptFunction
+                     completionHandler: nil];
+    }
+    else if ([message.body isEqualToString: @"hasLoaded"])
+    {
+      [self.delegate webViewControllerDidFinishPostLoad: self];
+    }
   }
 }
 
