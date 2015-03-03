@@ -25,7 +25,8 @@ NSString* const BCRequestKeyMessage = @"message";
 NSString* const BCRequestParamsLogin = @"username=%@&password=%@";
 NSString* const BCRequestParamsResetPassword = @"email=%@";
 NSString* const BCRequestParamsRegister
-  = @"username=%@&password=%@&email=%@&firstname=%@&lastname=%@&location=%@&birthdate=%f&preferences=%@";
+  = (@"username=%@&password=%@&email=%@&firstname=%@&lastname=%@&location=%@"
+     @"&birthdate=%f&preferences=%@");
 
 @implementation BCServerRequest
 
