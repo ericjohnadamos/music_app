@@ -173,7 +173,7 @@
                                 <rect key="frame" x="232" y="58" width="137" height="80"/>
                             </imageView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="wf5-zE-3de">
-                                <rect key="frame" x="282" y="282" width="37" height="37"/>
+                                <rect key="frame" x="282" y="326" width="37" height="37"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
@@ -181,7 +181,7 @@
                             <constraint firstItem="fcX-bH-Rhg" firstAttribute="top" secondItem="WYF-Oo-FdV" secondAttribute="bottom" constant="36" id="0mI-ZR-tcR"/>
                             <constraint firstAttribute="centerX" secondItem="wf5-zE-3de" secondAttribute="centerX" id="4QU-YI-WHu"/>
                             <constraint firstItem="aOs-Mr-ZLm" firstAttribute="top" secondItem="CsV-EX-aHD" secondAttribute="bottom" constant="8" id="5Ah-vM-Wwn"/>
-                            <constraint firstAttribute="centerY" secondItem="wf5-zE-3de" secondAttribute="centerY" id="7Dl-un-GMY"/>
+                            <constraint firstItem="wf5-zE-3de" firstAttribute="centerY" secondItem="hfg-aO-szg" secondAttribute="centerY" constant="44" id="7Dl-un-GMY"/>
                             <constraint firstItem="n6U-OI-B4l" firstAttribute="leading" secondItem="hfg-aO-szg" secondAttribute="leading" constant="15" id="C8Y-9u-V5t"/>
                             <constraint firstItem="CsV-EX-aHD" firstAttribute="top" secondItem="ofm-Ic-Jm3" secondAttribute="bottom" constant="16" id="HWT-rv-WQW"/>
                             <constraint firstItem="n6U-OI-B4l" firstAttribute="top" secondItem="fcX-bH-Rhg" secondAttribute="bottom" constant="20" id="MdH-Cl-obM"/>
@@ -205,8 +205,13 @@
                     <connections>
                         <outlet property="activityIndicator" destination="wf5-zE-3de" id="Pqv-dP-2kU"/>
                         <outlet property="fbLoginView" destination="fcX-bH-Rhg" id="jml-AB-Ffd"/>
+                        <outlet property="forgotPasswordButton" destination="n6U-OI-B4l" id="tOb-6W-pE3"/>
                         <outlet property="invalidCredentialsLabel" destination="CsV-EX-aHD" id="rOC-3V-fUG"/>
+                        <outlet property="loginButton" destination="WYF-Oo-FdV" id="ICn-4s-cNs"/>
                         <outlet property="loginTableView" destination="aOs-Mr-ZLm" id="IdC-dD-4jN"/>
+                        <outlet property="logoImageView" destination="ofm-Ic-Jm3" id="zmI-YO-TLg"/>
+                        <outlet property="logoTopSpace" destination="imS-Hj-otT" id="cvs-Hm-yHR"/>
+                        <outlet property="signupButton" destination="VKe-Ys-eTJ" id="bLK-qD-9dv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fhu-LI-HWi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -331,11 +336,11 @@
                         <viewControllerLayoutGuide type="bottom" id="zLq-TD-Fkc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PD7-bA-JoL">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6cu-YB-M2a" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -517,8 +522,8 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="oiq-5o-ADy">
-                                <rect key="frame" x="291" y="259" width="37" height="37"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="oiq-5o-ADy">
+                                <rect key="frame" x="282" y="250" width="37" height="37"/>
                                 <color key="color" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </activityIndicatorView>
                         </subviews>
