@@ -106,17 +106,24 @@ decidePolicyForNavigationAction: (WKNavigationAction*)                action
 - (void) userContentController: (WKUserContentController*) userContentController
        didReceiveScriptMessage: (WKScriptMessage*)         message
 {
-  if ([message.name isEqualToString:@"observe"])
+  if ([message.name isEqualToString: @"observe"])
   {
-    NSString* token = [UserSettings sharedInstance].token;
-    
-    NSLog(@"Token %@", token);
-    
-    NSString* template = @"setToken(\"%@\");";
-    NSString* javascriptFunction = [NSString stringWithFormat: template, token];
-    
-    [self.webview evaluateJavaScript: javascriptFunction
-                   completionHandler: nil];
+    if ([message.body isEqualToString: @"userToken"])
+    {
+      NSString* token = [UserSettings sharedInstance].token;
+      
+      NSLog(@"Token %@", token);
+      
+      NSString* template = @"setToken(\"%@\");";
+      NSString* javascriptFunction = [NSString stringWithFormat: template, token];
+      
+      [self.webview evaluateJavaScript: javascriptFunction
+                     completionHandler: nil];
+    }
+    else if ([message.body isEqualToString: @"hasLoaded"])
+    {
+      [self.delegate webViewControllerDidFinishPostLoad: self];
+    }
   }
 }
 
