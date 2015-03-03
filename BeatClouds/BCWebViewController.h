@@ -21,4 +21,6 @@
 
 @property (nonatomic, assign) id<BCWebViewDelegate> delegate;
 
+- (void) initWebView;
+
 @end
