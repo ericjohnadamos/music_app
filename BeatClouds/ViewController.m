@@ -21,9 +21,36 @@ NSString* const kStoryboard = @"Main";
 
 @property (nonatomic, assign) BOOL firstTime;
 
+@property (nonatomic, strong) BCLoginViewController* loginViewController;
 @end
 
 @implementation ViewController
+
+#pragma mark - Synthesize
+
+@synthesize loginViewController = m_loginViewController;
+#pragma mark - Properties
+
+- (BCLoginViewController*) loginViewController
+{
+  if (m_loginViewController == nil)
+  {
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName: kStoryboard
+                                                         bundle: nil];
+    UIViewController* loginViewController
+      = [storyboard instantiateViewControllerWithIdentifier: kLoginIdentifier];
+    loginViewController.modalTransitionStyle
+      = UIModalTransitionStyleCrossDissolve;
+    
+    if ([loginViewController isKindOfClass: [BCLoginViewController class]])
+    {
+      ((BCLoginViewController*) loginViewController).delegate = self;
+      
+    }
+    m_loginViewController = (BCLoginViewController*)loginViewController;
+  }
+  return m_loginViewController;
+}
 
 - (void) viewDidLoad
 {
@@ -40,16 +67,7 @@ NSString* const kStoryboard = @"Main";
   {
     self.firstTime = NO;
     
-    UIStoryboard* storyboard = [UIStoryboard storyboardWithName: kStoryboard
-                                                         bundle: nil];
-    UIViewController* loginViewController
-      = [storyboard instantiateViewControllerWithIdentifier: kLoginIdentifier];
-    if ([loginViewController isKindOfClass: [BCLoginViewController class]])
-    {
-      ((BCLoginViewController*) loginViewController).delegate = self;
-    }
-    
-    [self presentViewController: loginViewController
+    [self presentViewController: self.loginViewController
                        animated: NO
                      completion: nil];
   }
