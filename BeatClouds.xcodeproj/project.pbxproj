@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25ABAE6F1AA195FA00AAB255 /* BCUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 25ABAE6E1AA195FA00AAB255 /* BCUser.m */; };
 		842FDC481A97952700E8D834 /* BCModalDismissSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 842FDC471A97952700E8D834 /* BCModalDismissSegue.m */; };
 		842FDC4D1A979A8800E8D834 /* BCServerRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 842FDC4C1A979A8800E8D834 /* BCServerRequest.m */; };
 		842FDC521A97CD8100E8D834 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 842FDC4F1A97CD8100E8D834 /* Roboto-Light.ttf */; };
@@ -43,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		25ABAE6D1AA195FA00AAB255 /* BCUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCUser.h; sourceTree = "<group>"; };
+		25ABAE6E1AA195FA00AAB255 /* BCUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCUser.m; sourceTree = "<group>"; };
 		842FDC461A97952700E8D834 /* BCModalDismissSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCModalDismissSegue.h; sourceTree = "<group>"; };
 		842FDC471A97952700E8D834 /* BCModalDismissSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCModalDismissSegue.m; sourceTree = "<group>"; };
 		842FDC4B1A979A8800E8D834 /* BCServerRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCServerRequest.h; sourceTree = "<group>"; };
@@ -135,6 +138,8 @@
 			children = (
 				842FDC551A97FA8800E8D834 /* UserSettings.h */,
 				842FDC561A97FA8800E8D834 /* UserSettings.m */,
+				25ABAE6D1AA195FA00AAB255 /* BCUser.h */,
+				25ABAE6E1AA195FA00AAB255 /* BCUser.m */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -338,6 +343,7 @@
 				844F97061A7D2AA900AA8C5E /* BCWebViewController.m in Sources */,
 				8438529B1A937A5500BE41DE /* BCForgotPasswordViewController.m in Sources */,
 				84FCB8311A97612100E10C3E /* BCRegistrationViewController.m in Sources */,
+				25ABAE6F1AA195FA00AAB255 /* BCUser.m in Sources */,
 				84532E301A72635C003DB0CD /* AppDelegate.m in Sources */,
 				84532E2D1A72635C003DB0CD /* main.m in Sources */,
 				845330361A7289E9003DB0CD /* BCLoginViewController.m in Sources */,
