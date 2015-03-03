@@ -208,6 +208,30 @@ CGFloat const kDefaultLogoTopSpace = 38.0f;
 
 #pragma mark - Event handler
 
+- (void) enableLoader
+{
+  [[self view] endEditing: YES];
+  
+  [UIView animateWithDuration: 0.35f
+                   animations: ^(void)
+  {
+    self.loginTableView.alpha = 0.0f;
+    self.loginButton.alpha = 0.0f;
+    self.forgotPasswordButton.alpha = 0.0f;
+    self.signupButton.alpha = 0.0f;
+    self.fbLoginView.alpha = 0.0f;
+    
+    self.invalidCredentialsLabel.hidden = YES;
+    
+    self.logoTopSpace.constant = 164.0f;
+    [self.logoImageView layoutIfNeeded];
+  }
+                   completion: ^(BOOL isFinished)
+  {
+    self.activityIndicator.hidden = NO;
+  }];
+}
+
 - (IBAction) onLoginButtonHit: (id) sender
 {
   self.activityIndicator.hidden = NO;
