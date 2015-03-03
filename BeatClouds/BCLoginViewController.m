@@ -252,8 +252,7 @@ CGFloat const kDefaultLogoTopSpace = 38.0f;
 
 - (IBAction) onLoginButtonHit: (id) sender
 {
-  self.activityIndicator.hidden = NO;
-  self.invalidCredentialsLabel.hidden = YES;
+  [self enableLoader];
   
   /* Communicate server to login */
   [BCServerRequest loginWithUsername: self.username
@@ -277,11 +276,18 @@ CGFloat const kDefaultLogoTopSpace = 38.0f;
      }
      else
      {
-       /* Show error to the user */
-       self.invalidCredentialsLabel.hidden = NO;
+       [UIView animateWithDuration: 0.35f
+                        animations: ^(void)
+        {
+          /* Show error to the user */
+          self.invalidCredentialsLabel.hidden = NO;
+          [self disableLoader];
+        }
+                        completion: ^(BOOL isFinished)
+        {
+          self.activityIndicator.hidden = YES;
+        }];
      }
-     /* Close the throbber view */
-     self.activityIndicator.hidden = YES;
    }];
 }
 
