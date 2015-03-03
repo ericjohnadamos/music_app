@@ -27,4 +27,6 @@
 
 @property (nonatomic, assign) id<BCLoginViewDelegate> delegate;
 
+- (void) prepareForDismiss;
+
 @end

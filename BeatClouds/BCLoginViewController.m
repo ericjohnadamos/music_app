@@ -244,6 +244,12 @@ CGFloat const kDefaultLogoTopSpace = 38.0f;
   [self.logoImageView layoutIfNeeded];
 }
 
+- (void) prepareForDismiss
+{
+  [self disableLoader];
+  self.activityIndicator.hidden = YES;
+}
+
 - (IBAction) onLoginButtonHit: (id) sender
 {
   self.activityIndicator.hidden = NO;
