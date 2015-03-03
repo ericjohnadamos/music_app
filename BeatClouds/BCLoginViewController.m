@@ -232,6 +232,18 @@ CGFloat const kDefaultLogoTopSpace = 38.0f;
   }];
 }
 
+- (void) disableLoader
+{
+  self.loginTableView.alpha = 1.0f;
+  self.loginButton.alpha = 1.0f;
+  self.forgotPasswordButton.alpha = 1.0f;
+  self.signupButton.alpha = 1.0f;
+  self.fbLoginView.alpha = 1.0f;
+  
+  self.logoTopSpace.constant = kDefaultLogoTopSpace;
+  [self.logoImageView layoutIfNeeded];
+}
+
 - (IBAction) onLoginButtonHit: (id) sender
 {
   self.activityIndicator.hidden = NO;
