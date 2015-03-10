@@ -2,12 +2,13 @@
 //  BCServerRequest.h
 //  BeatClouds
 //
-//  Created by Eric John Adamos on 2/21/15.
+//  Created by Eric John Adamos <eric@south-soul.com> on 2/21/15.
 //  Copyright (c) 2015 SouthSoul IT Solutions. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "BCUser.h"
+#import "BCFBUser.h"
 
 typedef NS_ENUM(NSInteger, BCServerRequestResult)
 {
@@ -40,6 +41,10 @@ extern NSString* const BCRequestParamsRegister;
 + (void) loginWithUsername: (NSString*)         username
                   password: (NSString*)         password
                 completion: (BCLoginCompletion) completion;
+
+/* Login to the facebook server in background thread */
++ (void) facebookLoginWithFbUser: (BCFBUser*)         user
+                      completion: (BCLoginCompletion) completion;
 
 /* Request reset password in background thread */
 + (void) resetPasswordWithUsername: (NSString*)                 username
