@@ -27,6 +27,7 @@ NSInteger const kUsernameTextFieldTag = 9998;
 NSInteger const kPasswordTextFieldTag = 9999;
 
 CGFloat const kDefaultLogoTopSpace = 38.0f;
+CGFloat const kAnimateDuration = 0.35f;
 
 @interface BCLoginViewController ()
   <FBLoginViewDelegate,
@@ -137,8 +138,76 @@ CGFloat const kDefaultLogoTopSpace = 38.0f;
       && [self.delegate respondsToSelector:
           @selector(loginViewController:didFetchUserInfo:)])
   {
-    [self.delegate loginViewController: self
-                      didFetchUserInfo: user];
+    [[self view] endEditing: YES];
+    [UIView animateWithDuration: kAnimateDuration
+                     animations: ^(void)
+     {
+       [self enableLoader];
+     }
+                     completion: ^(BOOL isFinished)
+     {
+       self.activityIndicator.hidden = NO;
+     }];
+    
+    BCFBUser* fbUser = [BCFBUser new];
+    [[FBRequest requestForMe]
+     startWithCompletionHandler: ^(FBRequestConnection* connection,
+                                   FBGraphObject*       result,
+                                   NSError*             error)
+    {
+      if (result && !error)
+      {
+        fbUser.userId = result[@"id"];
+        fbUser.accessToken = [NSString stringWithFormat: @"%@",
+                              [FBSession activeSession].accessTokenData];
+        fbUser.email = result[@"email"];
+        fbUser.firstname = result[@"first_name"];
+        fbUser.lastname = result[@"last_name"];
+        fbUser.location = result[@"locale"];
+        
+        [BCServerRequest
+         facebookLoginWithFbUser: fbUser
+                      completion: ^(NSString*             token,
+                                    BCServerRequestResult result)
+         {
+           if (result == BCRequestResultOK)
+           {
+             if (   self.delegate != nil
+                 && [self.delegate respondsToSelector:
+                     @selector(loginViewControllerDidLogin:)])
+             {
+               [[UserSettings sharedInstance] setToken: token];
+               
+               /* Begin to inform the delegate about the successful login */
+               [self.delegate loginViewControllerDidLogin: self];
+             }
+             /* Clear username and password textfield */
+             [self clearAllText];
+           }
+           else
+           {
+             [UIView animateWithDuration: kAnimateDuration
+                              animations: ^(void)
+              {
+                /* Show error to the user */
+                self.invalidCredentialsLabel.hidden = NO;
+                [self disableLoader];
+              }
+                              completion: ^(BOOL isFinished)
+              {
+                self.activityIndicator.hidden = YES;
+              }];
+           }
+           
+           [self.delegate loginViewController: self
+                             didFetchUserInfo: user];
+         }];
+      }
+      else
+      {
+        NSLog(@"Error in processing facebook login");
+      }
+    }];
   }
 }
 
@@ -210,26 +279,16 @@ CGFloat const kDefaultLogoTopSpace = 38.0f;
 
 - (void) enableLoader
 {
-  [[self view] endEditing: YES];
+  self.loginTableView.alpha = 0.0f;
+  self.loginButton.alpha = 0.0f;
+  self.forgotPasswordButton.alpha = 0.0f;
+  self.signupButton.alpha = 0.0f;
+  self.fbLoginView.alpha = 0.0f;
   
-  [UIView animateWithDuration: 0.35f
-                   animations: ^(void)
-  {
-    self.loginTableView.alpha = 0.0f;
-    self.loginButton.alpha = 0.0f;
-    self.forgotPasswordButton.alpha = 0.0f;
-    self.signupButton.alpha = 0.0f;
-    self.fbLoginView.alpha = 0.0f;
-    
-    self.invalidCredentialsLabel.hidden = YES;
-    
-    self.logoTopSpace.constant = 164.0f;
-    [self.logoImageView layoutIfNeeded];
-  }
-                   completion: ^(BOOL isFinished)
-  {
-    self.activityIndicator.hidden = NO;
-  }];
+  self.invalidCredentialsLabel.hidden = YES;
+  
+  self.logoTopSpace.constant = 164.0f;
+  [self.logoImageView layoutIfNeeded];
 }
 
 - (void) disableLoader
@@ -252,7 +311,16 @@ CGFloat const kDefaultLogoTopSpace = 38.0f;
 
 - (IBAction) onLoginButtonHit: (id) sender
 {
-  [self enableLoader];
+  [[self view] endEditing: YES];
+  [UIView animateWithDuration: kAnimateDuration
+                   animations: ^(void)
+   {
+     [self enableLoader];
+   }
+                   completion: ^(BOOL isFinished)
+   {
+     self.activityIndicator.hidden = NO;
+   }];
   
   /* Communicate server to login */
   [BCServerRequest loginWithUsername: self.username
@@ -276,7 +344,7 @@ CGFloat const kDefaultLogoTopSpace = 38.0f;
      }
      else
      {
-       [UIView animateWithDuration: 0.35f
+       [UIView animateWithDuration: kAnimateDuration
                         animations: ^(void)
         {
           /* Show error to the user */
