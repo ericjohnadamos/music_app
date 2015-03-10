@@ -390,13 +390,15 @@ didSelectRowAtIndexPath: (NSIndexPath*) indexPath
     UITableViewCell* cell = [tableView cellForRowAtIndexPath: indexPath];
     UILabel* label = (UILabel*)[cell viewWithTag: kLabelTag];
     
+    int actualRow = (int)indexPath.row + 1;
+    
     if (cell.accessoryType == UITableViewCellAccessoryNone)
     {
       cell.accessoryType = UITableViewCellAccessoryCheckmark;
       label.textColor = [UIColor blackColor];
       
       [self.userMusicPreferences addObject:
-       [NSNumber numberWithInt: indexPath.row + 1]];
+       [NSNumber numberWithInt: actualRow]];
     }
     else
     {
@@ -404,7 +406,7 @@ didSelectRowAtIndexPath: (NSIndexPath*) indexPath
       label.textColor = [UIColor lightGrayColor];
       
       [self.userMusicPreferences removeObject:
-       [NSNumber numberWithInt: indexPath.row + 1]];
+       [NSNumber numberWithInt: actualRow]];
     }
   }
 }
