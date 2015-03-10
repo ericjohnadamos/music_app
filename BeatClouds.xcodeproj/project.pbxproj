@@ -30,6 +30,7 @@
 		84532F701A72752F003DB0CD /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 84532E551A72752E003DB0CD /* LICENSE */; };
 		84532F711A72752F003DB0CD /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84532E561A72752E003DB0CD /* README.txt */; };
 		845330361A7289E9003DB0CD /* BCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845330351A7289E9003DB0CD /* BCLoginViewController.m */; };
+		8466BB961AAF24DD00D5CB61 /* BCFBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8466BB951AAF24DD00D5CB61 /* BCFBUser.m */; };
 		84FCB8311A97612100E10C3E /* BCRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FCB8301A97612100E10C3E /* BCRegistrationViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,8 @@
 		84532E561A72752E003DB0CD /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		845330341A7289E9003DB0CD /* BCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCLoginViewController.h; sourceTree = "<group>"; };
 		845330351A7289E9003DB0CD /* BCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCLoginViewController.m; sourceTree = "<group>"; };
+		8466BB941AAF24DD00D5CB61 /* BCFBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCFBUser.h; sourceTree = "<group>"; };
+		8466BB951AAF24DD00D5CB61 /* BCFBUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCFBUser.m; sourceTree = "<group>"; };
 		84FCB82F1A97612100E10C3E /* BCRegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCRegistrationViewController.h; sourceTree = "<group>"; };
 		84FCB8301A97612100E10C3E /* BCRegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCRegistrationViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,6 +143,8 @@
 				842FDC561A97FA8800E8D834 /* UserSettings.m */,
 				25ABAE6D1AA195FA00AAB255 /* BCUser.h */,
 				25ABAE6E1AA195FA00AAB255 /* BCUser.m */,
+				8466BB941AAF24DD00D5CB61 /* BCFBUser.h */,
+				8466BB951AAF24DD00D5CB61 /* BCFBUser.m */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -338,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				842FDC4D1A979A8800E8D834 /* BCServerRequest.m in Sources */,
+				8466BB961AAF24DD00D5CB61 /* BCFBUser.m in Sources */,
 				842FDC571A97FA8800E8D834 /* UserSettings.m in Sources */,
 				84532E331A72635C003DB0CD /* ViewController.m in Sources */,
 				844F97061A7D2AA900AA8C5E /* BCWebViewController.m in Sources */,
