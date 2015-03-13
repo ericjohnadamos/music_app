@@ -348,7 +348,7 @@ viewForHeaderInSection: (NSInteger)    section
     cell = [tableView dequeueReusableCellWithIdentifier:
             @"UserInfoHeaderView"];
   }
-  else
+  else if (section == RegistrationRowMusicPreferences)
   {
     cell = [tableView dequeueReusableCellWithIdentifier:
             @"MusicPreferencesHeaderView"];
@@ -364,10 +364,14 @@ viewForFooterInSection: (NSInteger)    section
   frame.origin.y = 0.0f;
   frame.size.height = 20.0f;
   
-  view.backgroundColor = [UIColor colorWithRed: 236/256.0f
-                                         green: 136/256.0f
-                                          blue: 60/256.0f
-                                         alpha: 1];
+  if (section == RegistrationRowUserInformation)
+  {
+    view.backgroundColor = [UIColor colorWithRed: 236 / 256.0f
+                                           green: 136 / 256.0f
+                                            blue: 060 / 256.0f
+                                           alpha: 1];
+  }
+  
   return view;
 }
 
