@@ -25,6 +25,8 @@ typedef void (^BCLoginCompletion)(NSString*             token,
 typedef void (^BCResetPasswordCompletion)(BCServerRequestResult result);
 typedef void (^BCRegisterCompletion)(NSString*             serverResponse,
                                      BCServerRequestResult result);
+typedef void (^BCCheckMessageCompletion)(NSArray*              messages,
+                                         BCServerRequestResult result);
 
 @interface BCServerRequest : NSObject
 
@@ -36,6 +38,7 @@ extern NSString* const BCRequestKeyMessage;
 extern NSString* const BCRequestParamsLogin;
 extern NSString* const BCRequestParamsResetPassword;
 extern NSString* const BCRequestParamsRegister;
+extern NSString* const BCRequestParamsCheckMessage;
 
 /* Login to the server in background thread */
 + (void) loginWithUsername: (NSString*)         username
@@ -53,5 +56,10 @@ extern NSString* const BCRequestParamsRegister;
 /* Request registration in background thread */
 + (void) registerWithUser: (BCUser*)              user
                completion: (BCRegisterCompletion) completion;
+
+/* Request check new messages given the user token and current timestamp UTC */
++ (void) messageCheckWithUserToken: (NSString*)                token
+                         timestamp: (NSInteger)                timestamp
+                        completion: (BCCheckMessageCompletion) completion;
 
 @end
