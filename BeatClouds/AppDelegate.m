@@ -65,7 +65,7 @@ didFinishLaunchingWithOptions: (NSDictionary*) launchOptions
     NSTimeInterval timestamp = [[NSDate new] timeIntervalSince1970];
     [BCServerRequest
      messageCheckWithUserToken: userToken
-                     timestamp: 0
+                     timestamp: timestamp
                     completion: ^(NSArray*              messages,
                                   BCServerRequestResult result)
      {
@@ -81,18 +81,18 @@ didFinishLaunchingWithOptions: (NSDictionary*) launchOptions
              {
                return;
              }
-             localNotification.applicationIconBadgeNumber =0;
+             localNotification.applicationIconBadgeNumber = 0;
              localNotification.alertBody = data[@"email"];
              localNotification.soundName = UILocalNotificationDefaultSoundName;
              localNotification.fireDate
                 = [NSDate dateWithTimeIntervalSinceNow: 0];
              localNotification.timeZone = [NSTimeZone defaultTimeZone];
+             
              [[UIApplication sharedApplication] scheduleLocalNotification:
               localNotification];
            }
          }
        }
-       NSLog(@"%d", result);
      }];
   }
 }
