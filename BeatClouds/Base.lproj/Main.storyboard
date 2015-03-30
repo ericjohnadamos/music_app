@@ -71,7 +71,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hNN-6P-smM" id="6i8-JZ-dfC">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" tag="9998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AO0-P6-6z6">
+                                                <textField opaque="NO" clipsSubviews="YES" tag="9998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Email or Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AO0-P6-6z6">
                                                     <rect key="frame" x="16" y="0.0" width="538" height="43"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="43" id="lIK-IL-URl"/>
