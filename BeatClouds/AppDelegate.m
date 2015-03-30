@@ -48,11 +48,6 @@ didFinishLaunchingWithOptions: (NSDictionary*) launchOptions
                  ^(void)
   {
     [self requestForIncomingMessages];
-//    while(YES)
-//    {
-//      [self requestForIncomingMessages];
-//      [NSThread sleepForTimeInterval: 10];
-//    }
   });
 }
 
