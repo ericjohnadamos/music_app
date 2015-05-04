@@ -25,8 +25,10 @@
 
 @interface BCLoginViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView* activityIndicator;
 @property (nonatomic, assign) id<BCLoginViewDelegate> delegate;
 
+- (void) enableLoader;
 - (void) prepareForDismiss;
 
 @end

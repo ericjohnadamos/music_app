@@ -44,7 +44,6 @@ CGFloat const kAnimateDuration = 0.35f;
 @property (weak, nonatomic) IBOutlet UIButton* loginButton;
 @property (weak, nonatomic) IBOutlet UIButton* forgotPasswordButton;
 @property (weak, nonatomic) IBOutlet UIButton* signupButton;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView* activityIndicator;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint* logoTopSpace;
 @property (weak, nonatomic) IBOutlet UIImageView* logoImageView;
 

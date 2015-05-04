@@ -11,6 +11,7 @@
 
 #import "BCLoginViewController.h"
 #import "BCWebViewController.h"
+#import "UserSettings.h"
 
 #define kLoginIdentifier NSStringFromClass([BCLoginViewController class])
 #define kWebviewIdentifier NSStringFromClass([BCWebViewController class])
@@ -97,7 +98,25 @@ NSString* const kStoryboard = @"Main";
     
     [self presentViewController: self.loginViewController
                        animated: NO
-                     completion: nil];
+                     completion: ^(void)
+     {
+       UserSettings* userSettings = [UserSettings sharedInstance];
+       if (userSettings.token.length > 0)
+       {
+         NSLog(@"Token: %@", userSettings.token);
+         [self.webViewController initWebView];
+         
+         [UIView animateWithDuration: 0.3f
+                          animations: ^(void)
+          {
+            [self.loginViewController enableLoader];
+          }
+                          completion: ^(BOOL isFinished)
+          {
+            self.loginViewController.activityIndicator.hidden = NO;
+          }];
+       }
+     }];
   }
 }
 
