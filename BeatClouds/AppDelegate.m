@@ -37,9 +37,7 @@ didFinishLaunchingWithOptions: (NSDictionary*) launchOptions
 
 - (void) applicationWillResignActive: (UIApplication*) application
 {
-  /* TODO */
-  
-  NSLog(@"%s", __PRETTY_FUNCTION__);
+  /* Nothing to do */
 }
 
 - (void) applicationDidEnterBackground: (UIApplication*) application
@@ -94,21 +92,17 @@ didFinishLaunchingWithOptions: (NSDictionary*) launchOptions
 
 - (void) applicationWillEnterForeground: (UIApplication*) application
 {
-  /* TODO */
-  
-  NSLog(@"%s", __PRETTY_FUNCTION__);
-  
   [application endBackgroundTask:UIBackgroundTaskInvalid];
 }
 
 - (void) applicationDidBecomeActive: (UIApplication*) application
 {
-  /* TODO */
+  /* Nothing to do */
 }
 
 - (void) applicationWillTerminate: (UIApplication*) application
 {
-  /* TODO */
+  /* Nothing to do */
 }
 
 - (BOOL) application: (UIApplication*) application
