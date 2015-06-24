@@ -124,7 +124,21 @@ decidePolicyForNavigationAction: (WKNavigationAction*)                action
     {
       [self.delegate webViewControllerDidFinishPostLoad: self];
     }
+    else if ([message.body isEqualToString: @"didUpdateAccount"])
+    {
+      [self displayAlertWithMessage: @"Account details has been updated"];
+    }
   }
+}
+
+- (void) displayAlertWithMessage: (NSString*) message
+{
+  UIAlertView* alert = [[UIAlertView alloc] initWithTitle: @"BeatClouds"
+                                                  message: message
+                                                 delegate: self
+                                        cancelButtonTitle: @"OK"
+                                        otherButtonTitles: nil, nil];
+  [alert show];
 }
 
 @end
