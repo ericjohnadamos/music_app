@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>ph.southsoul.$(PRODUCT_NAME:rfc1034identifier)</string>
+	<string>ph.southsoul.$(PRODUCT_NAME:rfc1034identifier)-ios</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
