@@ -171,6 +171,21 @@ NSInteger const kCountryTag = 9995;
   {
     m_datePicker = [UIDatePicker new];
     m_datePicker.datePickerMode = UIDatePickerModeDate;
+    
+    NSDate* now = [NSDate date];
+    NSCalendar* calendar = [NSCalendar currentCalendar];
+    
+    NSDateComponents* nowWithoutSecondsComponents
+      = [calendar components: (  NSCalendarUnitEra
+                               | NSCalendarUnitYear
+                               | NSCalendarUnitMonth
+                               | NSCalendarUnitDay)
+                    fromDate: now];
+    
+    NSDate* dateNow = [calendar dateFromComponents:
+                       nowWithoutSecondsComponents];
+    m_datePicker.maximumDate = dateNow;
+    
     [m_datePicker addTarget: self
                      action: @selector(datePickerDidChangeValue:)
            forControlEvents: UIControlEventValueChanged];
