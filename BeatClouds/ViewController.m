@@ -96,27 +96,30 @@ NSString* const kStoryboard = @"Main";
   {
     self.firstTime = NO;
     
-    [self presentViewController: self.loginViewController
-                       animated: NO
-                     completion: ^(void)
-     {
-       UserSettings* userSettings = [UserSettings sharedInstance];
-       if (userSettings.token.length > 0)
+    if (![self.loginViewController isBeingPresented])
+    {
+      [self presentViewController: self.loginViewController
+                         animated: NO
+                       completion: ^(void)
        {
-         NSLog(@"Token: %@", userSettings.token);
-         [self.webViewController initWebView];
-         
-         [UIView animateWithDuration: 0.3f
-                          animations: ^(void)
-          {
-            [self.loginViewController enableLoader];
-          }
-                          completion: ^(BOOL isFinished)
-          {
-            self.loginViewController.activityIndicator.hidden = NO;
-          }];
-       }
-     }];
+         UserSettings* userSettings = [UserSettings sharedInstance];
+         if (userSettings.token.length > 0)
+         {
+           NSLog(@"Token: %@", userSettings.token);
+           [self.webViewController initWebView];
+           
+           [UIView animateWithDuration: 0.3f
+                            animations: ^(void)
+            {
+              [self.loginViewController enableLoader];
+            }
+                            completion: ^(BOOL isFinished)
+            {
+              self.loginViewController.activityIndicator.hidden = NO;
+            }];
+         }
+       }];
+    }
   }
 }
 
@@ -148,12 +151,15 @@ NSString* const kStoryboard = @"Main";
 
 - (void) webViewControllerDidFinishPostLoad: (BCWebViewController*) controller
 {
-  [self.loginViewController presentViewController: self.webViewController
-                                         animated: YES
-                                       completion: ^(void)
-   {
-     [self.loginViewController prepareForDismiss];
-   }];
+  if (![self.webViewController isBeingPresented])
+  {
+    [self.loginViewController presentViewController: self.webViewController
+                                           animated: YES
+                                         completion: ^(void)
+     {
+       [self.loginViewController prepareForDismiss];
+     }];
+  }
 }
 
 @end
