@@ -582,5 +582,10 @@ heightForRowAtIndexPath: (NSIndexPath*) indexPath
 {
   [self changeDateFromLabel: self.countryPickerView];
 }
+- (IBAction) didSelectCancelButton: (UIBarButtonItem*) sender
+{
+  [self dismissViewControllerAnimated: YES
+                           completion: nil];
+}
 
 @end
