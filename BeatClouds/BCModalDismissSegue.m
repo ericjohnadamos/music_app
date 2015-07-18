@@ -14,9 +14,12 @@
 {
   UIViewController* sourceViewController = self.sourceViewController;
   
-  [sourceViewController.presentingViewController
-   dismissViewControllerAnimated: YES
-                      completion: nil];
+  if ([sourceViewController.presentingViewController isBeingPresented])
+  {
+    [sourceViewController.presentingViewController
+     dismissViewControllerAnimated: YES
+                        completion: nil];
+  }
 }
 
 @end
