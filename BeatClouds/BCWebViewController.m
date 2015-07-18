@@ -56,6 +56,8 @@
     WKWebViewConfiguration* configuration
       = [[WKWebViewConfiguration alloc] init];
     configuration.userContentController = controller;
+    configuration.allowsInlineMediaPlayback = YES;
+    configuration.mediaPlaybackRequiresUserAction = NO;
     
     CGRect frame = self.view.frame;
     frame.origin.y = 20.0f;
