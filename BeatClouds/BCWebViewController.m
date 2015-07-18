@@ -90,6 +90,8 @@ decidePolicyForNavigationAction: (WKNavigationAction*)                action
     
     [UserSettings sharedInstance].token = nil;
     
+    [self.webview loadRequest: [[NSURLRequest alloc] initWithURL:
+                                [NSURL URLWithString: @"about:blank"]]];
     [self dismissViewControllerAnimated: YES
                              completion: nil];
     
