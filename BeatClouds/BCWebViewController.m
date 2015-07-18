@@ -117,7 +117,8 @@ decidePolicyForNavigationAction: (WKNavigationAction*)                action
       NSLog(@"Token %@", token);
       
       NSString* template = @"setToken(\"%@\");";
-      NSString* javascriptFunction = [NSString stringWithFormat: template, token];
+      NSString* javascriptFunction
+        = [NSString stringWithFormat: template, token];
       
       [self.webview evaluateJavaScript: javascriptFunction
                      completionHandler: nil];
