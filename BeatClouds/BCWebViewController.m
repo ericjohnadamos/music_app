@@ -133,6 +133,16 @@ decidePolicyForNavigationAction: (WKNavigationAction*)                action
     {
       [self displayAlertWithMessage: @"Account details has been updated"];
     }
+    else if ([message.body isEqualToString: @"didFailMessageSend"])
+    {
+      NSString* msg = @"User does not exist. Unable to send message";
+      [self displayAlertWithMessage: msg];
+    }
+    else if ([message.body isEqualToString: @"didFailUpdateExistingName"])
+    {
+      NSString* msg = @"Username already exist. Unable to update";
+      [self displayAlertWithMessage: msg];
+    }
   }
 }
 
