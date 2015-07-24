@@ -151,7 +151,8 @@ NSString* const kStoryboard = @"Main";
 
 - (void) webViewControllerDidFinishPostLoad: (BCWebViewController*) controller
 {
-  if (![self.webViewController isBeingPresented])
+  if (   ![self.webViewController isBeingPresented]
+      && self.webViewController.presentingViewController == nil)
   {
     [self.loginViewController presentViewController: self.webViewController
                                            animated: YES
