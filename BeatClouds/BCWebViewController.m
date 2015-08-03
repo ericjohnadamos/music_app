@@ -143,6 +143,11 @@ decidePolicyForNavigationAction: (WKNavigationAction*)                action
       NSString* msg = @"Username already exist. Unable to update";
       [self displayAlertWithMessage: msg];
     }
+    else if ([message.body isEqualToString: @"didFailUpdateExistingEmail"])
+    {
+      NSString* msg = @"Email already exist. Unable to update";
+      [self displayAlertWithMessage: msg];
+    }
   }
 }
 
