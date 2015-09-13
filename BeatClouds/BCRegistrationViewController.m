@@ -141,15 +141,22 @@ NSInteger const kCountryTag = 9995;
 {
   if (m_countries == nil)
   {
-    NSMutableArray* mutableArray = [NSMutableArray new];
-    for (NSString* countryCode in [NSLocale ISOCountryCodes])
+    NSLocale* locale = [NSLocale currentLocale];
+    NSArray* countryArray = [NSLocale ISOCountryCodes];
+    
+    NSMutableDictionary* sortedCountryDic = [[NSMutableDictionary alloc] init];
+    
+    for (NSString* countryCode in countryArray)
     {
-      NSString* country = [[NSLocale systemLocale]
-                           displayNameForKey: NSLocaleCountryCode
-                                       value: countryCode];
-      [mutableArray addObject: country];
+      NSString* displayNameString
+        = [locale displayNameForKey: NSLocaleCountryCode
+                              value: countryCode];
+      [sortedCountryDic setObject: countryCode
+                           forKey: displayNameString];
     }
-    m_countries = mutableArray;
+
+    m_countries = [[sortedCountryDic allKeys] sortedArrayUsingSelector:
+                   @selector(localizedCompare:)];
   }
   return m_countries;
 }
