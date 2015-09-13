@@ -19,9 +19,7 @@
           && self.email != nil && self.email.length > 0
           && self.firstname != nil && self.firstname.length > 0
           && self.lastname != nil && self.lastname.length > 0
-          && self.location != nil && self.location.length > 0
-          && self.musicPreferences != nil && self.musicPreferences.length > 0
-          && self.birthday > 0.0f);
+          && self.musicPreferences != nil && self.musicPreferences.length > 0);
 }
 
 @end
